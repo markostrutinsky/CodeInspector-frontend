@@ -20,6 +20,7 @@ const MainPage = () => {
   const onFileDeleted = () => {
     setSyntaxErrors([]);
     setFileAnalyzed(false);
+    setErrorMessage(null);
   };
 
   // Функція для обробки натискання кнопки "Analyze File"
@@ -49,15 +50,26 @@ const MainPage = () => {
         }
       );
 
-      // Якщо успішно, обробляємо відповідь
-      console.log("File analyzed successfully:", response.data);
-      setSyntaxErrors(response.data); // Зберігаємо помилки в стан
-      setFileAnalyzed(true); // Встановлюємо, що аналіз завершено
-    } catch (error) {
-      setErrorMessage("There was an error uploading the file.");
-      console.error("Error uploading file:", error);
+      // Якщо успішно, зберігаємо дані, але показуємо після затримки
+      setTimeout(() => {
+        setSyntaxErrors(response.data); // Зберігаємо помилки в стан
+        setFileAnalyzed(true); // Встановлюємо, що аналіз завершено
+      }, 1500); // 1.5 секунди
+    } catch (error: any) {
+      // Відображаємо помилку після затримки
+      setTimeout(() => {
+        if (error.response?.data?.message) {
+          setErrorMessage(error.response.data.message); // Виводимо повідомлення від бекенду
+        } else {
+          setErrorMessage("There was an error uploading the file.");
+        }
+        console.error("Error uploading file:", error);
+      }, 1500); // 1.5 секунди
     } finally {
-      setIsLoading(false);
+      // Приховуємо `Loading...` після 1.5 секунд
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1500); // 1.5 секунди
     }
   };
 
@@ -69,13 +81,13 @@ const MainPage = () => {
           onFileSelected={handleFileSelected}
           onFileDeleted={onFileDeleted}
         />
-        {isLoading && <p className={styles["loading-text"]}></p>}
-        {errorMessage && (
+        {isLoading && <p className={styles["loading-text"]}>Loading...</p>}
+        {!isLoading && errorMessage && (
           <p className={styles["error-message"]}>{errorMessage}</p>
         )}
 
         {/* Виведення помилок синтаксису з додаванням класу для стилізації */}
-        {fileAnalyzed && syntaxErrors.length > 0 ? (
+        {!isLoading && fileAnalyzed && syntaxErrors.length > 0 ? (
           <div className={styles["syntax-errors"]}>
             <h3>Syntax Errors</h3>
             <ul>
@@ -88,6 +100,7 @@ const MainPage = () => {
             </ul>
           </div>
         ) : (
+          !isLoading &&
           fileAnalyzed && (
             <p className={styles["no-errors-message"]}>
               The file has no syntax errors.

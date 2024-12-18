@@ -49,6 +49,21 @@ h3 {
   font-style: italic;
 }
 
+.error-message {
+  color: #ff4d4f; /* Яскраво-червоний колір для повідомлення */
+  background-color: #fff1f0; /* Світлий червоний фон для контрасту */
+  border: 1px solid #ffa39e; /* Світлий червоний контур */
+  border-radius: 5px; /* Заокруглені кути */
+  padding: 10px; /* Відступи всередині елемента */
+  margin: 10px 0; /* Відступ зверху і знизу */
+  font-size: 18px; /* Розмір тексту */
+  font-weight: 500; /* Напівжирний шрифт */
+  line-height: 1.5; /* Зручний інтервал між рядками */
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* mainPage.module.css */
 
 /* Стилі для повідомлення про відсутність помилок */
@@ -65,4 +80,24 @@ h3 {
   text-align: center; /* центроване вирівнювання тексту */
   margin-left: auto;
   margin-right: auto;
+}
+
+.loading-text {
+  color: #1890ff; /* Яскраво-синій колір для тексту */
+  font-size: 16px; /* Трохи більший розмір тексту */
+  font-weight: 500; /* Напівжирний шрифт */
+  text-align: center; /* Центрування тексту */
+  margin: 20px 0; /* Відступ зверху і знизу */
+  animation: fadeIn 1s ease-in-out infinite; /* Анімація */
+}
+
+/* Анімація для плавного мерехтіння тексту */
+@keyframes fadeIn {
+  0%,
+  100% {
+    opacity: 1; /* Повна видимість */
+  }
+  50% {
+    opacity: 0.5; /* Напівпрозорість */
+  }
 }
