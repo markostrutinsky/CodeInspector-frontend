@@ -16,8 +16,6 @@ body {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  position: absolute;
-  bottom: 0;
   width: 100%;
 }
 

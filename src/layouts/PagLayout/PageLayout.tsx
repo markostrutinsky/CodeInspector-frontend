@@ -5,7 +5,7 @@ import Footer from '../Footer/Footer';
 export const PageLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <div className={styles.container}>
-      {children}
+      <div className={styles.child}>{children}</div>
 
       <Footer />
     </div>

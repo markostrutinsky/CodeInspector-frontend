@@ -5,3 +5,7 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
+.child {
+  flex: 1;
+}
