@@ -1,0 +1,68 @@
+/* Стилі для секції з помилками синтаксису */
+h3 {
+  text-align: center;
+}
+
+.syntax-errors {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #f5c6cb;
+  border-radius: 8px;
+  background-color: #f8d7da;
+  color: #721c24;
+  margin-bottom: 10px;
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.syntax-errors h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #721c24;
+}
+
+.syntax-errors ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.syntax-errors li {
+  background-color: #ffe6e6;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  padding: 8px;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.syntax-errors li:nth-child(even) {
+  background-color: #f8d7da;
+}
+
+.syntax-errors li .error-line {
+  font-weight: bold;
+}
+
+.syntax-errors li .error-message {
+  font-style: italic;
+}
+
+/* mainPage.module.css */
+
+/* Стилі для повідомлення про відсутність помилок */
+.no-errors-message {
+  width: 1000px;
+  color: #4caf50; /* зелений колір для успіху */
+  font-size: 16px; /* розмір шрифту */
+  font-weight: bold; /* жирний шрифт */
+  margin-top: 20px; /* відступ зверху */
+  padding: 10px; /* внутрішні відступи */
+  background-color: #e8f5e9; /* світло-зелений фон */
+  border: 1px solid #4caf50; /* зелена обводка */
+  border-radius: 5px; /* закруглені кути */
+  text-align: center; /* центроване вирівнювання тексту */
+  margin-left: auto;
+  margin-right: auto;
+}

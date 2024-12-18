@@ -3,9 +3,13 @@ import styles from "./fileUpload.module.css";
 
 interface FileUploadProps {
   onFileSelected?: (file: File) => void;
+  onFileDeleted: () => void;
 }
 
-const FileUpload: React.FC<FileUploadProps> = ({ onFileSelected }) => {
+const FileUpload: React.FC<FileUploadProps> = ({
+  onFileSelected,
+  onFileDeleted,
+}) => {
   const [file, setFile] = useState<File | null>(null);
 
   // Обробка вибраного файлу
@@ -64,6 +68,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileSelected }) => {
     if (fileInput) {
       fileInput.value = "";
     }
+    onFileDeleted();
   };
 
   return (

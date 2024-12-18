@@ -3,12 +3,16 @@ import FileUpload from "C:\\Users\\marko\\Desktop\\CodeInspector-frontend\\src\\
 
 interface MainProps {
   onFileSelected: (file: File | null) => void;
+  onFileDeleted: () => void;
 }
 
-const Main: React.FC<MainProps> = ({ onFileSelected }) => {
+const Main: React.FC<MainProps> = ({ onFileSelected, onFileDeleted }) => {
   return (
     <main>
-      <FileUpload onFileSelected={onFileSelected} />
+      <FileUpload
+        onFileSelected={onFileSelected}
+        onFileDeleted={onFileDeleted}
+      />
     </main>
   );
 };
