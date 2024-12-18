@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./fileUpload.module.css";
 
 interface FileUploadProps {
-  onFileSelected?: (file: File) => void; // Колбек для передачі одного файлу назовні (опціонально)
+  onFileSelected?: (file: File) => void;
 }
 
 const FileUpload: React.FC<FileUploadProps> = ({ onFileSelected }) => {
@@ -57,6 +57,12 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileSelected }) => {
     setFile(null);
     if (onFileSelected) {
       onFileSelected(null as unknown as File); // Передаємо null, щоб очистити вибір зовні
+    }
+
+    // Очищаємо значення input, щоб дозволити повторний вибір файлу
+    const fileInput = document.getElementById("fileInput") as HTMLInputElement;
+    if (fileInput) {
+      fileInput.value = "";
     }
   };
 
