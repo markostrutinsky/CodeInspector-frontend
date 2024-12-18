@@ -1,5 +1,5 @@
-import React from "react";
-import FileUpload from "C:\\Users\\marko\\Desktop\\CodeInspector-frontend\\src\\components\\FileUpload.tsx";
+import React from 'react';
+import FileUpload from '../../components/FileUpload';
 
 interface MainProps {
   onFileSelected: (file: File | null) => void;

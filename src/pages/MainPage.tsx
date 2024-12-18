@@ -1,9 +1,9 @@
-import { useState } from "react";
-import axios from "axios";
-import Header from "../layouts/Header/Header";
-import Footer from "../layouts/Footer/Footer";
-import Main from "../layouts/Main/Main";
-import styles from "./mainPage.module.css";
+import { useState } from 'react';
+import axios from 'axios';
+import Header from '../layouts/Header/Header';
+import Main from '../layouts/Main/Main';
+import styles from './mainPage.module.css';
+import { PageLayout } from '../layouts/PagLayout/PageLayout';
 
 const MainPage = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -24,7 +24,7 @@ const MainPage = () => {
 
   const handleAnalyzeFile = async () => {
     if (!selectedFile) {
-      alert("Please select a file first.");
+      alert('Please select a file first.');
       return;
     }
 
@@ -34,15 +34,15 @@ const MainPage = () => {
     setFileAnalyzed(false);
 
     const formData = new FormData();
-    formData.append("cppFile", selectedFile);
+    formData.append('cppFile', selectedFile);
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/check",
+        'http://localhost:8080/api/check',
         formData,
         {
           headers: {
-            "Content-Type": "multipart/form-data",
+            'Content-Type': 'multipart/form-data',
           },
         }
       );
@@ -56,9 +56,9 @@ const MainPage = () => {
         if (error.response?.data?.message) {
           setErrorMessage(error.response.data.message);
         } else {
-          setErrorMessage("There was an error uploading the file.");
+          setErrorMessage('There was an error uploading the file.');
         }
-        console.error("Error uploading file:", error);
+        console.error('Error uploading file:', error);
       }, 1500);
     } finally {
       setTimeout(() => {
@@ -68,42 +68,35 @@ const MainPage = () => {
   };
 
   return (
-    <>
-      <div className={styles["main-container"]}>
-        <Header onAnalyzeFile={handleAnalyzeFile} />
-        <Main
-          onFileSelected={handleFileSelected}
-          onFileDeleted={onFileDeleted}
-        />
-        {isLoading && <p className={styles["loading-text"]}>Loading...</p>}
-        {!isLoading && errorMessage && (
-          <p className={styles["error-message"]}>{errorMessage}</p>
-        )}
+    <PageLayout>
+      <Header onAnalyzeFile={handleAnalyzeFile} />
+      <Main onFileSelected={handleFileSelected} onFileDeleted={onFileDeleted} />
+      {isLoading && <p className={styles['loading-text']}>Loading...</p>}
+      {!isLoading && errorMessage && (
+        <p className={styles['error-message']}>{errorMessage}</p>
+      )}
 
-        {!isLoading && fileAnalyzed && syntaxErrors.length > 0 ? (
-          <div className={styles["syntax-errors"]}>
-            <h3>Syntax Errors</h3>
-            <ul>
-              {syntaxErrors.map((error, index) => (
-                <li key={index}>
-                  Line: {error.line}, Column: {error.column}, Message:{" "}
-                  {error.message}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : (
-          !isLoading &&
-          fileAnalyzed && (
-            <p className={styles["no-errors-message"]}>
-              The file has no syntax errors.
-            </p>
-          )
-        )}
-
-        <Footer />
-      </div>
-    </>
+      {!isLoading && fileAnalyzed && syntaxErrors.length > 0 ? (
+        <div className={styles['syntax-errors']}>
+          <h3>Syntax Errors</h3>
+          <ul>
+            {syntaxErrors.map((error, index) => (
+              <li key={index}>
+                Line: {error.line}, Column: {error.column}, Message:{' '}
+                {error.message}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : (
+        !isLoading &&
+        fileAnalyzed && (
+          <p className={styles['no-errors-message']}>
+            The file has no syntax errors.
+          </p>
+        )
+      )}
+    </PageLayout>
   );
 };
 
