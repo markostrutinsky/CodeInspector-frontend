@@ -5,8 +5,13 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  width: 400px;
+  width: 1000px;
   margin: auto;
+  margin-top: 150px;
+}
+
+h2 {
+  margin-bottom: 12px;
 }
 
 .file-input {
@@ -57,7 +62,7 @@
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 }
 
 .upload-button:hover {

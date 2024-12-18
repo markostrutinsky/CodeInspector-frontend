@@ -5,18 +5,22 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  position: relative; /* Додаємо relative для правильного позиціонування футера */
 }
 
 /* Footer styling */
 .footer {
   background-color: #1e3a5f; /* Dark blue background */
   color: #bfd7ed; /* Light blue text */
+
   padding: 1.5rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  margin-top: auto;
+  position: absolute; /* Фіксуємо футер */
+  bottom: 0; /* Розміщуємо футер внизу */
+  width: 100%; /* Забезпечуємо, щоб футер займав всю ширину */
 }
 
 .footer-left,
