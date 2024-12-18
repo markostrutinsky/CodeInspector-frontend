@@ -1,7 +1,11 @@
-import styles from "./header.module.css";
 import React from "react";
+import styles from "./header.module.css";
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  onAnalyzeFile: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ onAnalyzeFile }) => {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>C++ Syntax Analyzer</div>
@@ -18,9 +22,9 @@ const Header: React.FC = () => {
           </li>
         </ul>
       </nav>
-      <a href="#upload" className={styles["cta-button"]}>
+      <button onClick={onAnalyzeFile} className={styles["cta-button"]}>
         Analyze File
-      </a>
+      </button>
     </header>
   );
 };
