@@ -12,19 +12,16 @@ const FileUpload: React.FC<FileUploadProps> = ({
 }) => {
   const [file, setFile] = useState<File | null>(null);
 
-  // Обробка вибраного файлу
   const handleFile = (newFile: File | null) => {
     if (!newFile) return;
 
     setFile(newFile);
 
-    // Передаємо файл через колбек, якщо він є
     if (onFileSelected) {
       onFileSelected(newFile);
     }
   };
 
-  // Обробка вибору файлу через input
   const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files && files.length > 0) {
@@ -32,7 +29,6 @@ const FileUpload: React.FC<FileUploadProps> = ({
     }
   };
 
-  // Обробка перетягування файлу
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.stopPropagation();
@@ -56,14 +52,12 @@ const FileUpload: React.FC<FileUploadProps> = ({
     }
   };
 
-  // Видалення вибраного файлу
   const handleRemoveFile = () => {
     setFile(null);
     if (onFileSelected) {
-      onFileSelected(null as unknown as File); // Передаємо null, щоб очистити вибір зовні
+      onFileSelected(null as unknown as File);
     }
 
-    // Очищаємо значення input, щоб дозволити повторний вибір файлу
     const fileInput = document.getElementById("fileInput") as HTMLInputElement;
     if (fileInput) {
       fileInput.value = "";
@@ -75,7 +69,6 @@ const FileUpload: React.FC<FileUploadProps> = ({
     <div className={styles["upload-container"]}>
       <h2>Choose or drag a file</h2>
 
-      {/* Input для вибору файлу */}
       <input
         type="file"
         id="fileInput"
@@ -83,19 +76,17 @@ const FileUpload: React.FC<FileUploadProps> = ({
         onChange={handleFileInput}
       />
 
-      {/* Кнопка для відкриття провідника */}
       <button
         type="button"
         className={`${styles["upload-button"]} ${
           file ? styles["disabled-button"] : ""
         }`}
         onClick={() => document.getElementById("fileInput")?.click()}
-        disabled={!!file} // Деактивація кнопки, якщо файл вибрано
+        disabled={!!file}
       >
         Upload File
       </button>
 
-      {/* Область для перетягування файлу */}
       <div
         id="dropArea"
         className={styles["drop-area"]}
@@ -119,7 +110,6 @@ const FileUpload: React.FC<FileUploadProps> = ({
         )}
       </div>
 
-      {/* Відображення вибраного файлу */}
       {file && (
         <div className={styles["file-info"]}>
           <h3>Selected file:</h3>

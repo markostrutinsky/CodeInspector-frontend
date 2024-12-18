@@ -1,26 +1,24 @@
-/* General styling */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  position: relative; /* Додаємо relative для правильного позиціонування футера */
+  position: relative;
 }
 
-/* Footer styling */
 .footer {
-  background-color: #1e3a5f; /* Dark blue background */
-  color: #bfd7ed; /* Light blue text */
+  background-color: #1e3a5f;
+  color: #bfd7ed;
 
   padding: 1.5rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  position: absolute; /* Фіксуємо футер */
-  bottom: 0; /* Розміщуємо футер внизу */
-  width: 100%; /* Забезпечуємо, щоб футер займав всю ширину */
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 .footer-left,
@@ -31,18 +29,18 @@ body {
 }
 
 .footer a {
-  color: #bfd7ed; /* Light blue links */
+  color: #bfd7ed;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .footer a:hover {
-  color: #e0f1ff; /* Even lighter blue on hover */
+  color: #e0f1ff;
 }
 
 .copyright {
   font-size: 0.9rem;
-  color: #a9c4dd; /* Subtle lighter text */
+  color: #a9c4dd;
 }
 
 @media (max-width: 768px) {

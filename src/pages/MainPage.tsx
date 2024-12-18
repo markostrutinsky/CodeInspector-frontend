@@ -3,16 +3,15 @@ import axios from "axios";
 import Header from "../layouts/Header/Header";
 import Footer from "../layouts/Footer/Footer";
 import Main from "../layouts/Main/Main";
-import styles from "./mainPage.module.css"; // Підключення CSS стилів
+import styles from "./mainPage.module.css";
 
 const MainPage = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [syntaxErrors, setSyntaxErrors] = useState<any[]>([]);
-  const [fileAnalyzed, setFileAnalyzed] = useState(false); // Новий стан для перевірки завершення аналізу
+  const [fileAnalyzed, setFileAnalyzed] = useState(false);
 
-  // Функція для обробки вибору файлу
   const handleFileSelected = (file: File | null) => {
     setSelectedFile(file);
   };
@@ -23,7 +22,6 @@ const MainPage = () => {
     setErrorMessage(null);
   };
 
-  // Функція для обробки натискання кнопки "Analyze File"
   const handleAnalyzeFile = async () => {
     if (!selectedFile) {
       alert("Please select a file first.");
@@ -32,44 +30,40 @@ const MainPage = () => {
 
     setIsLoading(true);
     setErrorMessage(null);
-    setSyntaxErrors([]); // Очищаємо помилки перед новим аналізом
-    setFileAnalyzed(false); // Скидаємо стан до початкового
+    setSyntaxErrors([]);
+    setFileAnalyzed(false);
 
     const formData = new FormData();
     formData.append("cppFile", selectedFile);
 
     try {
-      // Відправляємо POST запит з файлом на сервер
       const response = await axios.post(
         "http://localhost:8080/api/check",
         formData,
         {
           headers: {
-            "Content-Type": "multipart/form-data", // Оголошуємо тип даних як файл
+            "Content-Type": "multipart/form-data",
           },
         }
       );
 
-      // Якщо успішно, зберігаємо дані, але показуємо після затримки
       setTimeout(() => {
-        setSyntaxErrors(response.data); // Зберігаємо помилки в стан
-        setFileAnalyzed(true); // Встановлюємо, що аналіз завершено
-      }, 1500); // 1.5 секунди
+        setSyntaxErrors(response.data);
+        setFileAnalyzed(true);
+      }, 1500);
     } catch (error: any) {
-      // Відображаємо помилку після затримки
       setTimeout(() => {
         if (error.response?.data?.message) {
-          setErrorMessage(error.response.data.message); // Виводимо повідомлення від бекенду
+          setErrorMessage(error.response.data.message);
         } else {
           setErrorMessage("There was an error uploading the file.");
         }
         console.error("Error uploading file:", error);
-      }, 1500); // 1.5 секунди
+      }, 1500);
     } finally {
-      // Приховуємо `Loading...` після 1.5 секунд
       setTimeout(() => {
         setIsLoading(false);
-      }, 1500); // 1.5 секунди
+      }, 1500);
     }
   };
 
@@ -86,7 +80,6 @@ const MainPage = () => {
           <p className={styles["error-message"]}>{errorMessage}</p>
         )}
 
-        {/* Виведення помилок синтаксису з додаванням класу для стилізації */}
         {!isLoading && fileAnalyzed && syntaxErrors.length > 0 ? (
           <div className={styles["syntax-errors"]}>
             <h3>Syntax Errors</h3>

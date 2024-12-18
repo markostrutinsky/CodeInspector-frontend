@@ -1,4 +1,3 @@
-/* Стилі для секції з помилками синтаксису */
 h3 {
   text-align: center;
 }
@@ -50,54 +49,50 @@ h3 {
 }
 
 .error-message {
-  color: #ff4d4f; /* Яскраво-червоний колір для повідомлення */
-  background-color: #fff1f0; /* Світлий червоний фон для контрасту */
-  border: 1px solid #ffa39e; /* Світлий червоний контур */
-  border-radius: 5px; /* Заокруглені кути */
-  padding: 10px; /* Відступи всередині елемента */
-  margin: 10px 0; /* Відступ зверху і знизу */
-  font-size: 18px; /* Розмір тексту */
-  font-weight: 500; /* Напівжирний шрифт */
-  line-height: 1.5; /* Зручний інтервал між рядками */
+  color: #ff4d4f;
+  background-color: #fff1f0;
+  border: 1px solid #ffa39e;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.5;
   width: 1000px;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* mainPage.module.css */
-
-/* Стилі для повідомлення про відсутність помилок */
 .no-errors-message {
   width: 1000px;
-  color: #4caf50; /* зелений колір для успіху */
-  font-size: 16px; /* розмір шрифту */
-  font-weight: bold; /* жирний шрифт */
-  margin-top: 20px; /* відступ зверху */
-  padding: 10px; /* внутрішні відступи */
-  background-color: #e8f5e9; /* світло-зелений фон */
-  border: 1px solid #4caf50; /* зелена обводка */
-  border-radius: 5px; /* закруглені кути */
-  text-align: center; /* центроване вирівнювання тексту */
+  color: #4caf50;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #e8f5e9;
+  border: 1px solid #4caf50;
+  border-radius: 5px;
+  text-align: center;
   margin-left: auto;
   margin-right: auto;
 }
 
 .loading-text {
-  color: #1890ff; /* Яскраво-синій колір для тексту */
-  font-size: 16px; /* Трохи більший розмір тексту */
-  font-weight: 500; /* Напівжирний шрифт */
-  text-align: center; /* Центрування тексту */
-  margin: 20px 0; /* Відступ зверху і знизу */
-  animation: fadeIn 1s ease-in-out infinite; /* Анімація */
+  color: #1890ff;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  margin: 20px 0;
+  animation: fadeIn 1s ease-in-out infinite;
 }
 
-/* Анімація для плавного мерехтіння тексту */
 @keyframes fadeIn {
   0%,
   100% {
-    opacity: 1; /* Повна видимість */
+    opacity: 1;
   }
   50% {
-    opacity: 0.5; /* Напівпрозорість */
+    opacity: 0.5;
   }
 }

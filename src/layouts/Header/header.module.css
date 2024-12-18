@@ -1,4 +1,3 @@
-/* General reset */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -6,9 +5,8 @@ body {
   color: #333;
 }
 
-/* Header styling */
 .header {
-  background-color: #1e3a5f; /* Dark blue background */
+  background-color: #1e3a5f;
   color: white;
   padding: 1rem 2rem;
   display: flex;
@@ -32,18 +30,18 @@ body {
 }
 
 .nav-links li a {
-  color: #bfd7ed; /* Light blue links */
+  color: #bfd7ed;
   text-decoration: none;
   font-size: 1rem;
   transition: color 0.3s ease;
 }
 
 .nav-links li a:hover {
-  color: #e0f1ff; /* Even lighter blue on hover */
+  color: #e0f1ff;
 }
 
 .cta-button {
-  background-color: #2c5b9c; /* Light blue button */
+  background-color: #2c5b9c;
   color: white;
   padding: 0.5rem 1.2rem;
   text-decoration: none;
@@ -54,5 +52,5 @@ body {
 }
 
 .cta-button:hover {
-  background-color: #1b437e; /* Darker blue on hover */
+  background-color: #1b437e;
 }

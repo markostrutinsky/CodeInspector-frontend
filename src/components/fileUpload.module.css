@@ -1,4 +1,3 @@
-/* Загальні стилі */
 .upload-container {
   text-align: center;
   background: #fff;
@@ -19,7 +18,7 @@ h3 {
 }
 
 .file-input {
-  display: none; /* Ховаємо стандартний input */
+  display: none;
 }
 
 .drop-area {
@@ -73,10 +72,9 @@ h3 {
   background-color: #4b0082;
 }
 
-/* Стиль для деактивованої кнопки */
 .upload-button:disabled {
-  background-color: #d3d3d3; /* Світло-сірий колір для деактивованої кнопки */
-  color: #a1a1a1; /* Тьмяний колір тексту */
+  background-color: #d3d3d3;
+  color: #a1a1a1;
   cursor: not-allowed;
 }
 
